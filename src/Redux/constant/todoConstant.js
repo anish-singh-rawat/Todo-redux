@@ -1,0 +1,7 @@
+export const ADD_TODO = "ADD_TODO"
+export const DELETE_ALL = "DELETE_ALL"
+export const DELETE_TODO = "DELETE_TODO"
+export const EDIT_TODO = "EDIT_TODO"
+export const INPUT_CHECK = "INPUT_CHECK"
+export const GET_LOCALE_ITEM = "GET_LOCALE_ITEM"
+export const INITIALIZE_DATA = "INITIALIZE_DATA"

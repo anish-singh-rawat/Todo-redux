@@ -3,9 +3,6 @@ import './ListPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteAll, deleteTodo, heandleCheck, heandleEdit, initializeData } from '../Redux/action/TodoAction';
 
-const LOCAL_STORAGE_KEY = 'todoList';
-
-
 export default function ListPage() {
     const [showInput, setShowInput] = useState(false);
     const [editTodo, setEditTodo] = useState(null);
@@ -14,6 +11,7 @@ export default function ListPage() {
     const [filterType, setFilterType] = useState('All');
 
     const dispatch = useDispatch();
+    const LOCAL_STORAGE_KEY = 'todoList';
 
     const onEdit = (item) => {
         setShowInput(true);
@@ -37,10 +35,6 @@ export default function ListPage() {
         }
     };
 
-    useEffect(() => {
-        setEditTodoValue(editTodo ? editTodo.todo : '');
-    }, [editTodo]);
-
     const handleFilterChange = (filter) => {
         setFilterType(filter);
     };
@@ -57,6 +51,10 @@ export default function ListPage() {
                 return todo;
         }
     };
+
+    useEffect(() => {
+        setEditTodoValue(editTodo ? editTodo.todo : '');
+    }, [editTodo]);
 
     useEffect(() => {
         const storedData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));

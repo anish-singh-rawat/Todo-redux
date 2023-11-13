@@ -1,10 +1,4 @@
-export const ADD_TODO = "ADD_TODO"
-export const DELETE_ALL = "DELETE_ALL"
-export const DELETE_TODO = "DELETE_TODO"
-export const EDIT_TODO = "EDIT_TODO"
-export const INPUT_CHECK = "INPUT_CHECK"
-export const GET_LOCALE_ITEM = "GET_LOCALE_ITEM"
-export const NITIALIZE_DATA = "NITIALIZE_DATA"
+import { ADD_TODO, DELETE_ALL, DELETE_TODO, EDIT_TODO, INITIALIZE_DATA, INPUT_CHECK } from "../constant/todoConstant"
 
 
 export const addTodo = (payload) => {
@@ -45,7 +39,7 @@ export const heandleCheck = (payload) => {
 
 export const initializeData = (data) => {
     return {
-      type: NITIALIZE_DATA,
+      type: INITIALIZE_DATA,
       payload: data,
     };
   };

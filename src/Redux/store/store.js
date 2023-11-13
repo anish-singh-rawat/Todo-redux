@@ -1,9 +1,8 @@
 import { createStore }from "redux"
-import { RootReducer } from "../RootReducer/RootReducer"
+import {  rootReducer } from "../RootReducer/rootReducer"
 
 let store = createStore(
-    RootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    rootReducer
     )
 
  export default store
