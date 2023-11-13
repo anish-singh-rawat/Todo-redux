@@ -41,3 +41,10 @@ export const heandleCheck = (payload) => {
         payload : payload
     }
 }
+
+export const initializeData = (data) => {
+    return {
+      type: 'INITIALIZE_DATA',
+      payload: data,
+    };
+  };

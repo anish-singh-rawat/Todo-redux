@@ -37,6 +37,9 @@ export const TodoReducer = (state = initialState, action) => {
                 updatedCheckbox.push(item)
             })
             return updatedCheckbox;
+        
+            case 'INITIALIZE_DATA':
+                return action.payload;
 
         default:
             return state;

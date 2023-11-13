@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './ListPage.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteAll, deleteTodo, heandleCheck, heandleEdit } from '../Redux/action/TodoAction';
+import { deleteAll, deleteTodo, heandleCheck, heandleEdit, initializeData } from '../Redux/action/TodoAction';
 
+const LOCAL_STORAGE_KEY = 'todoList';
 
-const getLocalItems = () => {
-    let list = localStorage.getItem('list');
-    if (list) {
-        return JSON.parse(localStorage.getItem('list'));
-    } else {
-        return [];
-    }
-};
 
 export default function ListPage() {
     const [showInput, setShowInput] = useState(false);
@@ -45,10 +38,6 @@ export default function ListPage() {
     };
 
     useEffect(() => {
-        localStorage.setItem('list', JSON.stringify(todo));
-    }, [todo]);
-
-    useEffect(() => {
         setEditTodoValue(editTodo ? editTodo.todo : '');
     }, [editTodo]);
 
@@ -59,13 +48,26 @@ export default function ListPage() {
     const filteredData = () => {
         switch (filterType) {
             case 'complete':
-                return todo.filter((item) => item.complete === true);
+                let completedData = todo.filter((item) => item.complete === true);
+                return completedData;
             case 'incomplete':
-                return todo.filter((item) => item.complete === false);
+                let InCompletedData = todo.filter((item) => item.complete === false);
+                return InCompletedData
             default:
                 return todo;
         }
     };
+
+    useEffect(() => {
+        const storedData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+        if (storedData) {
+            dispatch(initializeData(storedData));
+        }
+    }, []);
+    
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todo));
+    }, [todo])
 
     return (
         <>
@@ -119,7 +121,8 @@ export default function ListPage() {
                                         <div className="check-input-parent" >
                                             <input
                                                 className="form-check-input"
-                                                checked={item.checked}
+                                                checked={item.complete}
+                                                onChange={()=>{}}
                                                 onClick={() => dispatch(heandleCheck(item))} type="checkbox"
                                                 id={"flexCheckDefault" + item.id}
                                             />
