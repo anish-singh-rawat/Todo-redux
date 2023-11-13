@@ -64,7 +64,7 @@ export default function ListPage() {
             dispatch(initializeData(storedData));
         }
     }, []);
-    
+
     useEffect(() => {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todo));
     }, [todo])
@@ -74,44 +74,48 @@ export default function ListPage() {
             <div className="container ">
                 <div className="row">
                     <div className="col">
-                        
-                        <div className="top-btn d-flex justify-content-around">
-                            <div className='d-flex'>
-                                <input
-                                    type="radio"
-                                    id="option1"
-                                    defaultChecked
-                                    onClick={() => handleFilterChange('All')}
-                                    name="radio-group"
-                                />
-                                <div className='mt-2'>
-                                    ALL
-                                </div>
-                            </div>
 
-                            <div className='d-flex'>
-                                <input
-                                    type="radio"
-                                    id="option2"
-                                    onClick={() => handleFilterChange('complete')}
-                                    name="radio-group"
-                                />
-                                <div className='mt-2'>
-                                    Complete
-                                </div>
-                            </div>
+                        <div>
+                            {todo.length > 0 &&
+                                <div className="top-btn d-flex justify-content-around">
+                                    <div className='d-flex'>
+                                        <input
+                                            type="radio"
+                                            id="option1"
+                                            defaultChecked
+                                            onClick={() => handleFilterChange('All')}
+                                            name="radio-group"
+                                        />
+                                        <div className='mt-2'>
+                                            ALL
+                                        </div>
+                                    </div>
 
-                            <div className='d-flex'>
-                                <input
-                                    type="radio"
-                                    id="option3"
-                                    onClick={() => handleFilterChange('incomplete')}
-                                    name="radio-group"
-                                />
-                                <div className='mt-2'>
-                                    Incomplete
+                                    <div className='d-flex'>
+                                        <input
+                                            type="radio"
+                                            id="option2"
+                                            onClick={() => handleFilterChange('complete')}
+                                            name="radio-group"
+                                        />
+                                        <div className='mt-2'>
+                                            Complete
+                                        </div>
+                                    </div>
+
+                                    <div className='d-flex'>
+                                        <input
+                                            type="radio"
+                                            id="option3"
+                                            onClick={() => handleFilterChange('incomplete')}
+                                            name="radio-group"
+                                        />
+                                        <div className='mt-2'>
+                                            Incomplete
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            }
                         </div>
 
                         <div className="all-list-parent-data" >
@@ -122,7 +126,7 @@ export default function ListPage() {
                                             <input
                                                 className="form-check-input"
                                                 checked={item.complete}
-                                                onChange={()=>{}}
+                                                onChange={() => { }}
                                                 onClick={() => dispatch(heandleCheck(item))} type="checkbox"
                                                 id={"flexCheckDefault" + item.id}
                                             />
@@ -167,10 +171,12 @@ export default function ListPage() {
                         </div>
 
                         <div>
-                        {   todo.length > 0 &&
+                            {
+                            todo.length > 0 &&
                             <div className='btn btn-warning mt-3' onClick={() => dispatch(deleteAll())}>Delete All</div>
-                        }
+                            }
                         </div>
+                        
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_ALL, DELETE_TODO, EDIT_TODO, INPUT_CHECK } from "../action/TodoAction";
+import { ADD_TODO, DELETE_ALL, DELETE_TODO, EDIT_TODO, INPUT_CHECK, NITIALIZE_DATA } from "../action/TodoAction";
 
 const initialState = [];
 
@@ -38,7 +38,7 @@ export const TodoReducer = (state = initialState, action) => {
             })
             return updatedCheckbox;
         
-            case 'INITIALIZE_DATA':
+            case NITIALIZE_DATA:
                 return action.payload;
 
         default:

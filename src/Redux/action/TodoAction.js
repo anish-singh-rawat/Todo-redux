@@ -4,6 +4,7 @@ export const DELETE_TODO = "DELETE_TODO"
 export const EDIT_TODO = "EDIT_TODO"
 export const INPUT_CHECK = "INPUT_CHECK"
 export const GET_LOCALE_ITEM = "GET_LOCALE_ITEM"
+export const NITIALIZE_DATA = "NITIALIZE_DATA"
 
 
 export const addTodo = (payload) => {
@@ -44,7 +45,7 @@ export const heandleCheck = (payload) => {
 
 export const initializeData = (data) => {
     return {
-      type: 'INITIALIZE_DATA',
+      type: NITIALIZE_DATA,
       payload: data,
     };
   };
