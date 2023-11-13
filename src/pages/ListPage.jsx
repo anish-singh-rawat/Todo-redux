@@ -170,7 +170,7 @@ export default function ListPage() {
 
                         <div>
                             {
-                            todo.length > 0 &&
+                            todo.length > 1 &&
                             <div className='btn btn-warning mt-3' onClick={() => dispatch(deleteAll())}>Delete All</div>
                             }
                         </div>
