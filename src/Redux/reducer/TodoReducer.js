@@ -1,9 +1,10 @@
-import { ADD_TODO, DELETE_ALL, DELETE_TODO, EDIT_TODO, GET_LOCALE_ITEM, INPUT_CHECK } from "../action/TodoAction";
+import { ADD_TODO, DELETE_ALL, DELETE_TODO, EDIT_TODO, INPUT_CHECK } from "../action/TodoAction";
 
 const initialState = [];
 
 export const TodoReducer = (state = initialState, action) => {
     switch (action.type) {
+
         case ADD_TODO:
             return [...state, action.payload];
 
@@ -37,13 +38,8 @@ export const TodoReducer = (state = initialState, action) => {
             })
             return updatedCheckbox;
 
-        case GET_LOCALE_ITEM:
-            return {
-                ...state,
-                todo: action.payload,
-            };
-
         default:
             return state;
-    }
+   
+        }
 };

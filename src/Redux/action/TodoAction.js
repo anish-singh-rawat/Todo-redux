@@ -41,13 +41,3 @@ export const heandleCheck = (payload) => {
         payload : payload
     }
 }
-
-export const getLocalStorage = () => {
-    const data = localStorage.getItem("todoKey");
-    const todoStored = data ? JSON.parse(data) : [];
-    return {
-      type: GET_LOCALE_ITEM,
-      payload: todoStored,
-    };
-  };
-  
